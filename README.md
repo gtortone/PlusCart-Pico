@@ -38,8 +38,22 @@ PlusCart-Pico consists of these modules:
 
 RPi Pico connections are defined in [board.h](https://github.com/gtortone/PlusCart-Pico/blob/main/include/board.h) 
 
-
-
 ### Build
+
+Development environment is based on PlatformIO with two board profiles: `pico` and `vccgnd_yd_rp2040`.
+
+Start the build:
+```
+pio run -e vccgnd_yd_rp2040
+  or
+pio run -e pico
+```
+
+Upload firmware on board:
+``` 
+pio run -e vccgnd_yd_rp2040 -t upload
+  or
+pio run -e pico -t upload
+```
 
 
