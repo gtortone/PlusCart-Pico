@@ -13,10 +13,21 @@ Atari 2660 PlusCart-Pico is a porting on Al-Nafuur [PlusCart](https://github.com
 ## Hardware
 PlusCart-Pico consists of these modules:
 - Raspberry Pi Pico
+  
+  <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/rpi-pico.jpg" width="200" />
+  <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/rpi-purple.jpg" width="200" />
 - ESP8266-01
+
+  <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/esp8266.jpg" width="200" />
 - SD card breakout board
+
+  <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/microsd.jpg" width="200" />
 - USB UART (optional for debugging purposes)
 
+  <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/usb-uart.jpg" width="200" />
+
 ### Connections
+
+### Build
 
 
