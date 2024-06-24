@@ -28,6 +28,18 @@ PlusCart-Pico consists of these modules:
 
 ### Connections
 
+| RPi Pico pin | module pin |
+| ------------- | ------------- |
+| GP2...GP14 | cartridge bus ADDR[0...12] |
+| GP22...GP29 | cartridge bus DATA[0...7] |
+| GP16...GP19 | microSD (MISO, CS, SCK, MOSI) |
+| GP0, GP1, GP15 | ESP8266 (TX, RX, RST) |
+| GP20, GP21 | USB-UART (RX, TX) |
+
+RPi Pico connections are defined in [board.h](https://github.com/gtortone/PlusCart-Pico/blob/main/include/board.h) 
+
+
+
 ### Build
 
 
