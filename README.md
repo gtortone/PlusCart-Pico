@@ -40,7 +40,7 @@ RPi Pico connections are defined in [board.h](https://github.com/gtortone/PlusCa
 
 ### Build
 
-Development environment is based on PlatformIO with two board profiles: `pico` and `vccgnd_yd_rp2040`.
+Development environment is based on PlatformIO with two board profiles: `pico` and `vccgnd_yd_rp2040`. At first build all dependency library and whole development environment will be automatically installed and configured by PlatformIO.
 
 Start the build:
 ```
