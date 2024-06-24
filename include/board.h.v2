@@ -1,0 +1,48 @@
+#ifndef BOARD_H_
+#define BOARD_H_
+
+#include "pico/platform.h"
+
+#if DBG_SERIAL
+#include <SoftwareSerial.h>
+#endif
+
+extern char pico_uid[];
+
+// ADDR GPIO pins       :     GP16 - GP28
+#define PINROMADDR   16
+#define PINENABLE    28 
+#define ADDRWIDTH    13
+
+// DATA GPIO pins       :     GP8 - GP15
+#define PINROMDATA    8
+#define DATAWIDTH     8
+
+// UART debug pins      :     GP7 (RX), GP6 (TX)
+#if DBG_SERIAL
+#define DBG_UART_RX   6
+#define DBG_UART_TX   7
+#define DBG_UART_BAUDRATE   115200
+extern SoftwareSerial dbgSerial;
+#define dbg dbgSerial.printf
+#endif
+
+// SD card pins         :     GP4 (MISO), GP5 (CS), GP2 (SCK), GP3 (MOSI)
+#if USE_SD_CARD
+#define SD_MISO    4 
+#define SD_MOSI    3 
+#define SD_SCK     2 
+#define SD_CS      5
+#define SD_SPEED  2000000L
+#endif
+
+// ESP UART pins        :     GP0 (TX), GP1 (RX), GP29 (RST)
+#if USE_WIFI
+#define espSerial Serial1
+#define ESP_UART_TX        0
+#define ESP_UART_RX        1
+#define ESP_UART_BAUDRATE 115200
+#define ESP_RESET_PIN     29
+#endif
+
+#endif
