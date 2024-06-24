@@ -17,11 +17,10 @@ PlusCart-Pico consists of these modules:
   <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/rpi-pico.jpg" height="180" width="200" />
   <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/rpi-purple.jpg" height="180" width="200" />
 
-- Atari 2600 cartridge breakout board:
+- Atari 2600 cartridge breakout board [link](https://github.com/robinhedwards/UnoCart-2600/tree/master/pcbs/cartridge_slot_breakout)
 
   <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/atari.png" height="180" width="200" />
 
-  
 - ESP8266-01
 
   <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/esp8266.jpg" width="200" />
