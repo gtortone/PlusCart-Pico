@@ -64,8 +64,8 @@ void flash_buffer_at(uint8_t* buffer, uint32_t buffer_size, uint32_t flash_addre
    if(remaining_bytes > 0)
       end_address + FLASH_SECTOR_SIZE;
 
-   dbg("buffer_size: %ld, flash_address: 0x%X\r\n", buffer_size, flash_address);
-   dbg("parts: %d, remaining_bytes: %ld, end_address: 0x%X\r\n", parts, remaining_bytes, end_address);
+   //dbg("buffer_size: %ld, flash_address: 0x%X\r\n", buffer_size, flash_address);
+   //dbg("parts: %d, remaining_bytes: %ld, end_address: 0x%X\r\n", parts, remaining_bytes, end_address);
 
    flash_erase_storage(flash_address, end_address);
 
