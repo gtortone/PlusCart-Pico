@@ -63,4 +63,10 @@ pio run -e vccgnd_yd_rp2040 -t upload
 pio run -e pico -t upload
 ```
 
+### ESP-AT firmware flashing on ESP
+
+PlusCart-Pico uses ESP as wifi frontend and it requires [ESP-AT](https://github.com/espressif/esp-at) firmware installed on ESP module.
+
+In order to install ESP-AT please refer to [release](https://github.com/espressif/esp-at/releases) page and download [v2.2.1.0_esp8266](https://github.com/espressif/esp-at/releases/tag/v2.2.1.0_esp8266) if you are using ESP8266 module (ESP01, ...) or [v2.4.0.0](https://github.com/espressif/esp-at/releases/tag/v2.4.0.0) if you are using ESP32 module (WROVER, WROOM32, ...)
+
 
