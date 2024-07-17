@@ -339,6 +339,8 @@ void esp8266_init() {
    int count = 0;
 
    WiFi.init(espSerial, ESP_RESET_PIN);
+   // set WiFi STA mdoe
+   WiFi.endAP(true);
 
    do {
       sleep_ms(1000);
@@ -383,7 +385,7 @@ bool esp8266_reset(bool factory_reset) {
    if(factory_reset)
       return (sendCommandGetResponse("AT+RESTORE\r\n") == OK);
 
-   WiFi.reset();
+   WiFi.reset(ESP_RESET_PIN);
    sleep_ms(500);
 
    return true;
@@ -446,8 +448,12 @@ bool esp8266_is_connected(int timeout) {
 
    uint t = 0;
    uint interval = timeout / 10;
+   uint8_t val;
 
-   while((WiFi.status() != WL_CONNECTED) && (t < timeout)) {
+   while(WiFi.status() != WL_CONNECTED) {
+
+      if(t > timeout)
+         break;
 
       if(WiFi.status() == WL_CONNECT_FAILED)       // check for authentication issues...
          break;

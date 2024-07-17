@@ -54,6 +54,7 @@ void esp8266_AT_WiFiManager(void) {
    sendCommandGetResponse("AT+CIPMUX=0\r\n");                           // single connection
    sendCommandGetResponse("AT+CWMODE=1\r\n");	                        // disable AccessPoint mode.
 
+   esp8266_reset(false);
    esp8266_init();
 }
 

@@ -1149,6 +1149,7 @@ void system_secondary_init(void) {
       espSerial.setFIFOSize(WIFIESPAT_CLIENT_RX_BUFFER_SIZE);
       espSerial.begin(ESP_UART_BAUDRATE, SERIAL_8N1);
       WiFi.init(espSerial, ESP_RESET_PIN);
+      read_esp8266_at_version();
 #endif
 
       LittleFSConfig cfg;
@@ -1163,8 +1164,17 @@ void system_secondary_init(void) {
       dbg("start\n\r");
 #endif
 
-      init = true;
-   }
+#if USE_SD_CARD
+      // init SD card
+      sd_init_driver();
+#if ! USE_WIFI
+      //a short delay is important to let the SD card settle
+      sleep_ms(500);
+#endif
+#endif
+
+      pico_get_unique_board_id_string(pico_uid, 2 * PICO_UNIQUE_BOARD_ID_SIZE_BYTES + 1);
+   } 
 
    check_autostart(false);
 
@@ -1175,24 +1185,15 @@ void system_secondary_init(void) {
    if(user_settings.font_style >= FONT_MAX)
       user_settings.font_style = FONT_DEFAULT;
 
-   pico_get_unique_board_id_string(pico_uid, 2 * PICO_UNIQUE_BOARD_ID_SIZE_BYTES + 1);
-
-#if USE_SD_CARD
-   // init SD card
-   sd_init_driver();
-#if ! USE_WIFI
-   //a short delay is important to let the SD card settle
-   sleep_ms(500);
-#endif
-#endif
-
 #if USE_WIFI
-   esp8266_init();
-   read_esp8266_at_version();
+   //if(init)
+   //   esp8266_init();      // avoid to reset ESP twice at boot...
    check_autostart(true);
 #endif
 
    set_menu_status_byte(STATUS_StatusByteReboot, 0);
+
+   init = true;
 
    // set up status area
 }
