@@ -1,7 +1,7 @@
 # Atari 2600 PlusCart-Pico
 
 ## Description
-Atari 2660 PlusCart-Pico is a porting on Al-Nafuur [PlusCart](https://github.com/Al-Nafuur/United-Carts-of-Atari) to Raspberry Pi Pico platform. 
+Atari 2600 PlusCart-Pico is a porting on Al-Nafuur [PlusCart](https://github.com/Al-Nafuur/United-Carts-of-Atari) to Raspberry Pi Pico platform. 
 
 ## Features
 - SD card support for ROMs
