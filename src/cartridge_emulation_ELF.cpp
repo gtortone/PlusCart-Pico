@@ -113,8 +113,6 @@ int __time_critical_func(launch_elf_file)(const char* filename, uint32_t buffer_
       return 0;
    }
 
-   dbg("allocation ok\r\n");
-
    runPreInitFuncs(metaCount, meta);
    runInitFuncs(metaCount, meta);
 

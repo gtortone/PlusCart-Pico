@@ -4,7 +4,9 @@
 #include "flash.h"
 #include "cartridge_emulation_ACE.h"
 #include "cartridge_firmware.h"
+#if USE_SD_CARD
 #include "sd.h"
+#endif
 #include "flash.h"
 
 #define ACE_MAJOR_REV 1
@@ -126,7 +128,9 @@ int launch_ace_cartridge(const char* filename, uint32_t image_size, uint8_t* buf
       //EntryVector = (void*)(d->flash_base_address+512 - entry_offset  + header.entry_point);//Adjust vector dependent on position in ROM
       //FIXME
       EntryVector = cart_rom + (header.entry_point - 0x08020000);
-   } else if(d->type == SD_Cart_File) {
+   } 
+#if USE_SD_CARD
+   else if(d->type == SD_Cart_File) {
 
       dbg("ACE entry_point: 0x%X\r\n", header.entry_point);
       dbg("ACE entry_offset: 0x%X\r\n", entry_offset);
@@ -187,7 +191,9 @@ int launch_ace_cartridge(const char* filename, uint32_t image_size, uint8_t* buf
          dbg("cart_rom[0xC014]: 0x%X\r\n", cart_rom[0xC014]);
          dbg("cart_rom[0xC015]: 0x%X\r\n", cart_rom[0xC015]);
       }
-   } else {
+   } 
+#endif
+   else {
       return 0;
    }
 
@@ -227,7 +233,6 @@ int launch_ace_cartridge(const char* filename, uint32_t image_size, uint8_t* buf
    //Stock code uses "EntryVector" below, this jumps to the function pointer set in the ACE header(and adjusted by the bootloader dependent on the state of offline roms).
    //The ROM based ACE code has no arguments. However, "virtual" arguments are passed in the form of a uint32_t lookup table in buffer memory (0x20000000). It is optional for the ROM ace code to use all of the arguments.
    //This arrangement exists so that the ARM stack is unchanged for future versions of ACE which might pass more virtual arguments. In c, functions need to have the exact same number and type of arguments in their library code as from the function that called them.
-   dbg("start ACE cart....\r\n");
    return ((int (*)())EntryVector)(); /*Uncomment this line to run in ACE mode (code in ROM)*/
    //	emulate_ACEROM_cartridge();  /*Uncomment this line to run in firmware mode(code in Pluscart fimrware) */
 
