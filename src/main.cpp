@@ -1148,7 +1148,8 @@ void system_secondary_init(void) {
 #if USE_WIFI
       espSerial.setFIFOSize(WIFIESPAT_CLIENT_RX_BUFFER_SIZE);
       espSerial.begin(ESP_UART_BAUDRATE, SERIAL_8N1);
-      WiFi.init(espSerial, ESP_RESET_PIN);
+      // use esp8266_init() waits up to 10 seconds to WiFi module...
+      esp8266_init();
       read_esp8266_at_version();
 #endif
 
