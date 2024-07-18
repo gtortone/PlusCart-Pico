@@ -132,10 +132,10 @@ int launch_ace_cartridge(const char* filename, uint32_t image_size, uint8_t* buf
 #if USE_SD_CARD
    else if(d->type == SD_Cart_File) {
 
-      dbg("ACE entry_point: 0x%X\r\n", header.entry_point);
-      dbg("ACE entry_offset: 0x%X\r\n", entry_offset);
-      dbg("buffered_size: %ld\r\n", buffered_size);
-      dbg("unbuffered_size: %ld\r\n", unbuffered_size);
+      //dbg("ACE entry_point: 0x%X\r\n", header.entry_point);
+      //dbg("ACE entry_offset: 0x%X\r\n", entry_offset);
+      //dbg("buffered_size: %ld\r\n", buffered_size);
+      //dbg("unbuffered_size: %ld\r\n", unbuffered_size);
       /*
       if(ace_type == PlusOnly) {
          return 0;
@@ -172,24 +172,24 @@ int launch_ace_cartridge(const char* filename, uint32_t image_size, uint8_t* buf
          //EntryVector = cart_rom - entry_offset  + header.entry_point; //Adjust vector dependent on position in ROM
          EntryVector = cart_rom + (header.entry_point - 0x08020000);
 
-         dbg("cart_rom: 0x%X\r\n", cart_rom);
-         dbg("EntryVector: 0x%X\r\n", EntryVector);
+         //dbg("cart_rom: 0x%X\r\n", cart_rom);
+         //dbg("EntryVector: 0x%X\r\n", EntryVector);
 
-         dbg("buffer[0]: 0x%X\r\n", buffer[0]);
-         dbg("buffer[1]: 0x%X\r\n", buffer[1]);
-         dbg("buffer[2]: 0x%X\r\n", buffer[2]);
-         dbg("buffer[3]: 0x%X\r\n", buffer[3]);
-         dbg("buffer[4]: 0x%X\r\n", buffer[4]);
-         dbg("buffer[5]: 0x%X\r\n", buffer[5]);
+         //dbg("buffer[0]: 0x%X\r\n", buffer[0]);
+         //dbg("buffer[1]: 0x%X\r\n", buffer[1]);
+         //dbg("buffer[2]: 0x%X\r\n", buffer[2]);
+         //dbg("buffer[3]: 0x%X\r\n", buffer[3]);
+         //dbg("buffer[4]: 0x%X\r\n", buffer[4]);
+         //dbg("buffer[5]: 0x%X\r\n", buffer[5]);
 
-         dbg("cart_rom[0]: 0x%X\r\n", cart_rom[0]);
-         dbg("cart_rom[1]: 0x%X\r\n", cart_rom[1]);
-         dbg("cart_rom[2]: 0x%X\r\n", cart_rom[2]);
-         dbg("cart_rom[3]: 0x%X\r\n", cart_rom[3]);
-         dbg("cart_rom[4]: 0x%X\r\n", cart_rom[4]);
-         dbg("cart_rom[5]: 0x%X\r\n", cart_rom[5]);
-         dbg("cart_rom[0xC014]: 0x%X\r\n", cart_rom[0xC014]);
-         dbg("cart_rom[0xC015]: 0x%X\r\n", cart_rom[0xC015]);
+         //dbg("cart_rom[0]: 0x%X\r\n", cart_rom[0]);
+         //dbg("cart_rom[1]: 0x%X\r\n", cart_rom[1]);
+         //dbg("cart_rom[2]: 0x%X\r\n", cart_rom[2]);
+         //dbg("cart_rom[3]: 0x%X\r\n", cart_rom[3]);
+         //dbg("cart_rom[4]: 0x%X\r\n", cart_rom[4]);
+         //dbg("cart_rom[5]: 0x%X\r\n", cart_rom[5]);
+         //dbg("cart_rom[0xC014]: 0x%X\r\n", cart_rom[0xC014]);
+         //dbg("cart_rom[0xC015]: 0x%X\r\n", cart_rom[0xC015]);
       }
    } 
 #endif
