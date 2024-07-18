@@ -21,7 +21,7 @@ PlusCart-Pico consists of these modules:
 
   <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/atari.png" height="180" width="200" />
 
-- ESP8266-01
+- ESP8266-01 (or ESP32)
 
   <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/esp8266.jpg" width="200" />
   
