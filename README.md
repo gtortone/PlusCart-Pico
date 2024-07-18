@@ -67,7 +67,7 @@ pio run -e pico -t upload
 
 PlusCart-Pico uses ESP as wifi frontend and it requires [ESP-AT](https://github.com/espressif/esp-at) firmware installed on ESP module.
 
-In order to install ESP-AT please refer to [release](https://github.com/espressif/esp-at/releases) page and download [v2.2.1.0_esp8266](https://github.com/espressif/esp-at/releases/tag/v2.2.1.0_esp8266) if you are using ESP8266 module (ESP01, ...) or [v2.4.0.0](https://github.com/espressif/esp-at/releases/tag/v2.4.0.0) if you are using ESP32 module (WROVER, WROOM32, ...).
+In order to install ESP-AT please refer to [release](https://github.com/espressif/esp-at/releases) page and download [v2.2.1.0_esp8266](https://github.com/espressif/esp-at/releases/tag/v2.2.1.0_esp8266) if you are using ESP8266 module (ESP01, ...) or [v2.2.0.0_esp32](https://github.com/espressif/esp-at/releases/tag/v2.2.0.0_esp32) if you are using ESP32 module (WROVER, WROOM32, ...).
 
 Two additional tools are required to flash the ESP-AT firmware: [esptool](https://github.com/espressif/esptool) and [at.py](https://raw.githubusercontent.com/espressif/esp-at/113702d9bf0224ed15e873bdc09898e804f4bd28/tools/at.py).
 
@@ -90,7 +90,7 @@ esptool.py --before default_reset --after hard_reset write_flash --flash_mode di
 #### ESP-AT firmware flashing on ESP32
 
 ```
-esptool.py --before default_reset --after hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 4MB 0x8000 partition_table/partition-table.bin 0x10000 ota_data_initial.bin 0xf000 phy_multiple_init_data.bin 0x1000 bootloader/bootloader.bin 0x100000 esp-at.bin 0x20000 at_customize.bin 0x24000 customized_partitions/server_cert.bin 0x39000 customized_partitions/mqtt_key.bin 0x26000 customized_partitions/server_key.bin 0x28000 customized_partitions/server_ca.bin 0x2e000 customized_partitions/client_ca.bin 0x30000 target.bin 0x21000 customized_partitions/ble_data.bin 0x3B000 customized_partitions/mqtt_ca.bin 0x37000 customized_partitions/mqtt_cert.bin 0x2a000 customized_partitions/client_cert.bin 0x2c000 customized_partitions/client_key.bin
+esptool.py --before default_reset --after hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 4MB 0x8000 partition_table/partition-table.bin 0x10000 ota_data_initial.bin 0xf000 phy_init_data.bin 0x1000 bootloader/bootloader.bin 0x100000 esp-at.bin 0x20000 at_customize.bin 0x24000 customized_partitions/server_cert.bin 0x39000 customized_partitions/mqtt_key.bin 0x26000 customized_partitions/server_key.bin 0x28000 customized_partitions/server_ca.bin 0x2e000 customized_partitions/client_ca.bin 0x30000 customized_partitions/factory_param.bin 0x21000 customized_partitions/ble_data.bin 0x3B000 customized_partitions/mqtt_ca.bin 0x37000 customized_partitions/mqtt_cert.bin 0x2a000 customized_partitions/client_cert.bin 0x2c000 customized_partitions/client_key.bin
 ```
 
 
