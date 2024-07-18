@@ -84,8 +84,6 @@ void flash_buffer_at(uint8_t* buffer, uint32_t buffer_size, uint32_t flash_addre
    restore_interrupts(irqstatus);
 }
 
-#if USE_WIFI || USE_SD_CARD
-
 /* write to flash with multiple HTTP range requests */
 uint32_t flash_download(char *filename, uint32_t download_size, uint32_t http_range_start, enum loadMedia media) {
 
@@ -123,7 +121,6 @@ uint32_t flash_download(char *filename, uint32_t download_size, uint32_t http_ra
 
    return address;
 }
-#endif
 
 void flash_copy(char *filename, uint32_t download_size, uint32_t start, uint32_t flash_address) {
 
