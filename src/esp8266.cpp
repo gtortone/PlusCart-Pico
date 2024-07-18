@@ -343,8 +343,8 @@ void esp8266_init() {
    WiFi.endAP(true);
 
    do {
-      sleep_ms(1000);
-   } while(esp8266_is_connected() == false && count++ < 10);
+      sleep_ms(200);
+   } while(esp8266_is_connected() == false && count++ < 50);
 }
 
 #if 0
@@ -452,7 +452,7 @@ bool esp8266_is_connected(int timeout) {
 
    while(WiFi.status() != WL_CONNECTED) {
 
-      if(t > timeout)
+      if(t >= timeout)
          break;
 
       if(WiFi.status() == WL_CONNECT_FAILED)       // check for authentication issues...
