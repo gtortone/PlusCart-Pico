@@ -21,7 +21,7 @@ PlusCart-Pico consists of these modules:
 
   <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/atari.png" height="180" width="200" />
 
-- ESP8266-01
+- ESP8266-01 (or ESP32)
 
   <img src="https://github.com/gtortone/PlusCart-Pico/blob/main/images/esp8266.jpg" width="200" />
   
@@ -61,6 +61,36 @@ Upload firmware on board:
 pio run -e vccgnd_yd_rp2040 -t upload
   or
 pio run -e pico -t upload
+```
+
+### ESP-AT firmware flashing on ESP
+
+PlusCart-Pico uses ESP as wifi frontend and it requires [ESP-AT](https://github.com/espressif/esp-at) firmware installed on ESP module.
+
+In order to install ESP-AT please refer to [release](https://github.com/espressif/esp-at/releases) page and download [v2.2.1.0_esp8266](https://github.com/espressif/esp-at/releases/tag/v2.2.1.0_esp8266) if you are using ESP8266 module (ESP01, ...) or [v2.4.0.0](https://github.com/espressif/esp-at/releases/tag/v2.4.0.0) if you are using ESP32 module (WROVER, WROOM32, ...).
+
+Two additional tools are required to flash the ESP-AT firmware: [esptool](https://github.com/espressif/esptool) and [at.py](https://raw.githubusercontent.com/espressif/esp-at/113702d9bf0224ed15e873bdc09898e804f4bd28/tools/at.py).
+
+#### Patching factory_param.bin
+
+Before flashing the file `customized_partitions/factory_param.bin` needs to be patched to use GPIO3 (RX) and GPIO1 (TX) as UART for AT commands. To proceed with patching use the following command with `at.py` script:
+
+```
+at.py modify_bin --tx_pin 1 --rx_pin 3 --input customized_partitions/factory_param.bin
+```
+
+The patched file will be named `target.bin` and is available in the working directory.
+
+#### ESP-AT firmware flashing on ESP8266
+
+```
+esptool.py --before default_reset --after hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 2MB 0x8000 partition_table/partition-table.bin 0x9000 ota_data_initial.bin 0x0 bootloader/bootloader.bin 0x10000 esp-at.bin 0xF0000 at_customize.bin 0xFC000 customized_partitions/client_ca.bin 0x106000 customized_partitions/mqtt_key.bin 0x104000 customized_partitions/mqtt_cert.bin 0x108000 customized_partitions/mqtt_ca.bin 0xF1000 target.bin 0xF8000 customized_partitions/client_cert.bin 0xFA000 customized_partitions/client_key.bin
+```
+
+#### ESP-AT firmware flashing on ESP32
+
+```
+esptool.py --before default_reset --after hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 4MB 0x8000 partition_table/partition-table.bin 0x10000 ota_data_initial.bin 0xf000 phy_multiple_init_data.bin 0x1000 bootloader/bootloader.bin 0x100000 esp-at.bin 0x20000 at_customize.bin 0x24000 customized_partitions/server_cert.bin 0x39000 customized_partitions/mqtt_key.bin 0x26000 customized_partitions/server_key.bin 0x28000 customized_partitions/server_ca.bin 0x2e000 customized_partitions/client_ca.bin 0x30000 target.bin 0x21000 customized_partitions/ble_data.bin 0x3B000 customized_partitions/mqtt_ca.bin 0x37000 customized_partitions/mqtt_cert.bin 0x2a000 customized_partitions/client_cert.bin 0x2c000 customized_partitions/client_key.bin
 ```
 
 
