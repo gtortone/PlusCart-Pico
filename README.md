@@ -49,14 +49,20 @@ RPi Pico connections are defined in [board.h](https://github.com/gtortone/PlusCa
 
 Development environment is based on PlatformIO with two board profiles: `pico` and `vccgnd_yd_rp2040`. At first build all dependency library and whole development environment will be automatically installed and configured by PlatformIO.
 
-Start the build:
+#### Start the build:
+
 ```
 pio run -e vccgnd_yd_rp2040
   or
 pio run -e pico
 ```
 
-Upload firmware on board:
+First run takes some minutes to complete in order to setup PlatformIO environment.
+
+#### Upload firmware on board:
+
+Run `upload` command while pressing BOOTSEL button:
+
 ``` 
 pio run -e vccgnd_yd_rp2040 -t upload
   or
