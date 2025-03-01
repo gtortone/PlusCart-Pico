@@ -41,6 +41,9 @@
 #define FF_USE_EXPAND	1
 /* This option switches f_expand function. (0:Disable or 1:Enable) */
 
+#ifdef FF_USE_CHMOD
+#undef FF_USE_CHMOD
+#endif
 
 #define FF_USE_CHMOD	1
 /* This option switches attribute manipulation functions, f_chmod() and f_utime().

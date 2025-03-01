@@ -63,8 +63,8 @@ MENU_ENTRY* generateSystemInfo(MENU_ENTRY *dst, int* num_menu_entries, char *inp
    sprintf(input_field, "Heap Free          %d KiB", rp2040.getFreeHeap()/1024);
    make_menu_entry(&dst, input_field, Leave_Menu, num_menu_entries);
 
-   FSInfo64 fsinfo;
-   LittleFS.info64(fsinfo);
+   FSInfo fsinfo;
+   LittleFS.info(fsinfo);
 
    sprintf(input_field, "Flash Size         %d KiB", fsinfo.totalBytes/1024);
    make_menu_entry(&dst, input_field, Leave_Menu, num_menu_entries);

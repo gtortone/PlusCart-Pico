@@ -51,7 +51,7 @@
 #include "sd.h"
 #endif
 
-#include "pico/platform.h"
+#include "pico.h"
 #include "pico/util/queue.h"
 #include "flash.h"
 

@@ -1,7 +1,7 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
-#include "pico/platform.h"
+#include "pico.h"
 
 #if DBG_SERIAL
 #include <SoftwareSerial.h>
